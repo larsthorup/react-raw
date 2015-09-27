@@ -1,3 +1,26 @@
+'use strict';
+
+const a = React.DOM.a;
+const div = React.DOM.div;
+const h1 = React.DOM.h1;
+const h2 = React.DOM.h2;
+const li = React.DOM.li;
+const ul = React.DOM.ul;
+
+var ProfileList = React.createClass({
+  propTypes: {
+    profiles: React.PropTypes.array.isRequired
+  },
+
+  render: function () {
+    return ul({className: 'ProfileList'}, this.renderListItems(this.props.profiles));
+  },
+
+  renderListItems: function (profiles) {
+    return profiles.map(profile => li({key: profile.key, className: 'ProfileListItem'}, React.createElement(Profile, profile)));
+  }
+});
+
 var Profile = React.createClass({
   propTypes: {
     role: React.PropTypes.string.isRequired,
@@ -6,9 +29,9 @@ var Profile = React.createClass({
   },
 
   render: function () {
-    return React.createElement('li', {className: 'Profile'},
-      React.createElement('h2', {className: 'Profile-role'}, this.props.role),
-      React.createElement('a', {href: this.props.url}, this.props.text)
+    return div({className: 'Profile'},
+      h2({className: 'Profile-role'}, this.props.role),
+      a({href: this.props.url}, this.props.text)
     )
   }
 });
@@ -20,11 +43,9 @@ var profiles = [
 
 
 var rootElement =
-  React.createElement('div', {},
-    React.createElement('h1', {}, 'Profiles'),
-    React.createElement('ul', {},
-      profiles.map(profile => React.createElement(Profile, profile))
-    )
+  div({},
+    h1({}, 'Profiles'),
+    React.createElement(ProfileList, {profiles: profiles})
   );
 
 ReactDOM.render(rootElement, document.getElementById('react-app'));
