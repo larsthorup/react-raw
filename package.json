@@ -1,0 +1,18 @@
+{
+  "name": "react-raw",
+  "version": "0.1.0",
+  "description": "react playground",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larsthorup/react-raw.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/larsthorup/react-raw/issues"
+  },
+  "homepage": "https://github.com/larsthorup/react-raw#readme",
+  "dependencies": {
+    "react-dom": "^0.14.0-rc1"
+  }
+}
